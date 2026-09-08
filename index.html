@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>최재혁 | Frontend Engineer / Tech Lead</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ========== Reset & Base ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --color-primary: #1a1a2e;
+      --color-accent: #0066ff;
+      --color-accent-light: #e8f0fe;
+      --color-text: #2d2d2d;
+      --color-text-secondary: #5a5a5a;
+      --color-text-light: #888;
+      --color-border: #e0e0e0;
+      --color-bg: #ffffff;
+      --color-bg-subtle: #f8f9fa;
+      --font-sans: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+
+    html { font-size: 15px; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background: #f0f0f0;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========== Page Container ========== */
+    .page {
+      max-width: 800px;
+      margin: 40px auto;
+      background: var(--color-bg);
+      padding: 60px 64px;
+      box-shadow: 0 1px 10px rgba(0,0,0,0.08);
+    }
+
+    /* ========== Header ========== */
+    .header { margin-bottom: 36px; }
+
+    .header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+
+    .header .subtitle {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--color-accent);
+      margin-bottom: 14px;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 0.87rem;
+      color: var(--color-text-secondary);
+    }
+
+    .contact a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact a:hover { color: var(--color-accent); }
+
+    .contact span::before {
+      content: '';
+      display: inline-block;
+      width: 3px;
+      height: 3px;
+      background: var(--color-text-light);
+      border-radius: 50%;
+      margin-right: 0;
+      vertical-align: middle;
+    }
+
+    .contact span:first-child::before { display: none; }
+
+    /* ========== Section ========== */
+    .section { margin-bottom: 32px; }
+
+    .section-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--color-accent);
+      border-bottom: 2px solid var(--color-accent);
+      padding-bottom: 6px;
+      margin-bottom: 18px;
+    }
+
+    /* ========== Summary ========== */
+    .summary p {
+      font-size: 0.95rem;
+      color: var(--color-text);
+      line-height: 1.8;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tech-tags span {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--color-accent);
+      background: var(--color-accent-light);
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+
+    /* ========== Experience ========== */
+    .exp-item { margin-bottom: 28px; }
+    .exp-item:last-child { margin-bottom: 0; }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 2px;
+    }
+
+    .exp-header h3 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .exp-header .period {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-text-light);
+      white-space: nowrap;
+    }
+
+    .exp-meta {
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .project { margin-bottom: 18px; }
+    .project:last-child { margin-bottom: 0; }
+
+    .project h4 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 6px;
+    }
+
+    .project .context {
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 6px;
+      font-style: italic;
+    }
+
+    .project ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .project ul li {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      padding-left: 16px;
+      position: relative;
+      color: var(--color-text);
+    }
+
+    .project ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 5px;
+      height: 5px;
+      background: var(--color-accent);
+      border-radius: 50%;
+    }
+
+    .project .result {
+      font-weight: 500;
+      color: var(--color-primary);
+    }
+
+    .exp-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .exp-tech span {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--color-text-secondary);
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border);
+      padding: 2px 8px;
+      border-radius: 3px;
+    }
+
+    .exp-note {
+      font-size: 0.83rem;
+      color: var(--color-text-secondary);
+      border-left: 3px solid var(--color-border);
+      padding-left: 12px;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    .lesson {
+      font-size: 0.83rem;
+      color: var(--color-text-secondary);
+      border-left: 3px solid var(--color-accent);
+      padding-left: 12px;
+      margin-top: 10px;
+      line-height: 1.7;
+    }
+
+    .lesson strong {
+      color: var(--color-primary);
+      font-weight: 700;
+      margin-right: 4px;
+    }
+
+    .lesson ol {
+      margin-top: 4px;
+      margin-left: 0;
+      padding-left: 18px;
+    }
+
+    .lesson ol li {
+      font-size: 0.83rem;
+      line-height: 1.7;
+      margin-bottom: 4px;
+    }
+
+    /* ========== Skills ========== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 6px 16px;
+      font-size: 0.88rem;
+    }
+
+    .skills-grid dt {
+      font-weight: 700;
+      color: var(--color-primary);
+      font-size: 0.82rem;
+    }
+
+    .skills-grid dd {
+      color: var(--color-text);
+    }
+
+    /* ========== Education ========== */
+    .education {
+      font-size: 0.88rem;
+      color: var(--color-text);
+    }
+
+    /* ========== Divider ========== */
+    hr {
+      border: none;
+      border-top: 1px solid var(--color-border);
+      margin: 0;
+    }
+
+    /* ========== Print ========== */
+    @media print {
+      html { font-size: 13px; }
+      body { background: white; }
+      .page {
+        max-width: none;
+        margin: 0;
+        padding: 40px 48px;
+        box-shadow: none;
+      }
+      .section { margin-bottom: 24px; }
+      .exp-item { margin-bottom: 20px; }
+      .project { break-inside: avoid; }
+      .contact a { color: var(--color-text-secondary) !important; }
+
+      @page {
+        size: A4;
+        margin: 12mm 8mm;
+      }
+    }
+
+    /* ========== Responsive ========== */
+    @media (max-width: 640px) {
+      .page { margin: 0; padding: 32px 24px; }
+      .exp-header { flex-direction: column; gap: 2px; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Header -->
+    <header class="header">
+      <h1>최재혁</h1>
+      <div class="subtitle">Frontend Engineer / Tech Lead</div>
+      <div class="contact">
+        <span>eheh34w@naver.com</span>
+        <span><a href="https://github.com/Tommy052" target="_blank">github.com/Tommy052</a></span>
+        <span><a href="https://medium.com/@eheh34w" target="_blank">medium.com/@eheh34w</a></span>
+      </div>
+    </header>
+
+    <!-- Summary -->
+    <section class="section summary">
+      <div class="section-title">Summary</div>
+      <p>
+        대규모 데이터 시각화 엔진을 직접 설계·구축하고, 6명 팀의 FE 아키텍처와 인프라 전반을 책임지는
+        <strong>6년차 Frontend Engineer / Tech Lead</strong> 입니다.
+        기존 차트 라이브러리의 한계를 WebGL/WebGPU 기반 렌더링으로 해결한 경험이 있으며,
+        트리피누에서 Django+React 풀스택 개발 경험을 바탕으로 BE/인프라까지 직접 다룹니다.
+      </p>
+      <div class="tech-tags">
+        <span>TypeScript</span>
+        <span>React</span>
+        <span>D3.js</span>
+        <span>WebGL</span>
+        <span>WebGPU</span>
+        <span>Babylon.js</span>
+        <span>Rust</span>
+        <span>Go</span>
+        <span>Electron</span>
+        <span>Tauri</span>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section">
+      <div class="section-title">Experience</div>
+
+      <!-- 딥아이 -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <h3>딥아이 — DEV 팀장 (풀스택)</h3>
+          <span class="period">2023.11 ~ 현재</span>
+        </div>
+        <div class="exp-meta">6명 팀 리딩 · 비파괴검사 AI 솔루션</div>
+
+        <div class="project">
+          <h4>GPU 기반 시각화 엔진 자체 개발</h4>
+          <p class="context">기존 데스크톱 분석 프로그램이 담당하던 검사 뷰어(ECT, IRIS 등)를 웹으로 대체하는 프로젝트. 검사 종류마다 데이터 규모와 시각화 요구가 달랐고(ECT는 멀티채널 라인 차트, IRIS는 대용량 히트맵), 인터랙션 요구는 점점 늘어났다. 단일 라이브러리로 모든 케이스를 커버하기가 어려웠다.</p>
+          <ul>
+            <li>Plotly.js → D3.js 엔진 자체 설계 → WebGL GPU 렌더러 3개 패키지 직접 개발 (히트맵, 데이터 히트맵, 스트립/라인 차트)</li>
+            <li>LOD 다운샘플링, 텍스처 타일 분할로 GPU 메모리 한계 극복</li>
+            <li>2D 맵의 3D 시각화를 위해 Babylon.js + WebGPU 기반 3D 뷰어 구축</li>
+          </ul>
+          <ul>
+            <li class="result">D3.js + SVG 대비 렌더링 성능 약 10배 향상, 수십만 포인트에서 60fps 유지</li>
+            <li class="result">고정 3개 → 검사자가 자유롭게 차트 선택·배치하는 구조로 전환</li>
+            <li class="result">2D → 3D 맵 확장으로 검사 데이터의 입체적 분석 가능, 고객 만족도 확보</li>
+          </ul>
+          <p class="lesson">
+            <strong>결정 과정 (단계적 진화):</strong>
+            <ol>
+              <li><strong>ECT 검사 뷰어 (1차 프로젝트)</strong>: 기존 데스크톱 ECT 뷰어를 웹으로 이식 → Plotly로 시작 → 커스텀 인터랙션 자유도 부족으로 D3 자체 구성으로 전환</li>
+              <li>ECT 뷰어 내 차트 15개 동시 렌더링 시 성능 이슈 → D3 + SVG 렌더링 최적화로 해결</li>
+              <li><strong>IRIS 검사 뷰어 (2차 프로젝트)</strong>: 처음엔 ECT처럼 D3로 시도 → IRIS는 검사 파일 크기 자체가 ECT 대비 크고 히트맵 특성상 드래그/줌 시 실시간성이 떨어졌음 → WebGL GPU 히트맵 PoC 진행, 큰 폭의 성능 향상 확인 후 도입</li>
+              <li>2D 정면 맵을 입체로 보고 싶다는 니즈 → 튜브프로 형태 참고, 웹에서 최대 성능 내기 위해 Babylon.js + WebGPU로 3D 뷰어 구축, 고객 검증 통과</li>
+            </ol>
+          </p>
+          <p class="lesson">
+            <strong>배운 점:</strong> 처음부터 WebGL/Babylon으로 가지 않은 게 결과적으로 올바른 선택이었다. 검사 종류마다 데이터 특성이 달라서, 단계마다 실제 병목을 확인하고 다음 기술로 넘어갔기 때문에 과도한 엔지니어링 없이 필요한 만큼만 복잡도를 추가할 수 있었다. 조기 최적화 유혹에 휘둘리지 않고 "지금 쓰는 기술의 한계"가 명확해질 때마다 다음 스택으로 갈아탄 것.
+          </p>
+        </div>
+
+        <div class="project">
+          <h4>모노레포 전환 및 TypeScript 마이그레이션</h4>
+          <p class="context">동일 솔루션의 변형 프로젝트가 늘어나면서 4개 레포에 중복 코드 산재, 공통 UI 수정 시 레포마다 각각 수정·배포 필요. JS 기반 런타임 타입 에러 빈번.</p>
+          <ul>
+            <li>Turborepo + pnpm 모노레포 통합 (현재 apps 6개 + packages 13개), 공통 UI 20+ 컴포넌트 분리</li>
+            <li>TypeScript strict 모드 전면 적용</li>
+          </ul>
+          <ul>
+            <li class="result">공통 UI 1회 수정으로 전체 앱 반영, 신규 화면 평균 개발 일수 마이그레이션 전후 비교 약 40% 단축</li>
+            <li class="result">Sentry 기준 마이그레이션 전후 런타임 타입 에러 90% 이상 감소</li>
+          </ul>
+          <p class="lesson">
+            <strong>결정 과정:</strong> 프로젝트 수가 늘면서 공통 컴포넌트·유틸의 재사용과 일관된 개선이 더 가치 있어진 시점이라고 판단. 모노레포로 통합해 "한 번 개선하면 모든 앱에 반영되는" 구조로 설계.<br>
+            <strong>배운 점:</strong> TypeScript strict는 점진적 도입보다 일괄 마이그레이션이 결국 빨랐다. 중간 상태(<code>any</code> 허용 + 일부 strict)는 두 방식의 단점만 가지며 팀원들이 타입 배우는 동기도 떨어짐.
+          </p>
+        </div>
+
+        <div class="project">
+          <h4>인프라 구축 및 DevOps</h4>
+          <p class="context">서버 인프라 부재, 수동 배포, 장애 인지는 고객 리포트에 의존.</p>
+          <ul>
+            <li>GCP VM Bastion → Private 서버 네트워크 아키텍처 설계</li>
+            <li>Jenkins CI/CD, Prometheus + Grafana 모니터링, Sentry FE 에러 추적 구축</li>
+          </ul>
+          <ul>
+            <li class="result">배포 시간 30분 → 5분, 장애 인지 수 시간 → 5분 내 감지</li>
+          </ul>
+        </div>
+
+        <div class="project">
+          <h4>Electron 오프라인 데스크톱 앱</h4>
+          <p class="context">웹 기반 솔루션을 운영 중이었으나, 일부 고객사 검사 현장에서 네트워크 없이 오프라인으로 판독해야 하는 요구가 발생. 기존 웹 자산(FE·BE·ML)을 버리지 않고 재활용하면서 오프라인 환경을 지원해야 했다.</p>
+          <ul>
+            <li>Electron으로 FE + BE + ML 패키지를 단일 데스크톱 앱으로 패키징, 오프라인 Windows 앱으로 빌드</li>
+            <li>기존 웹 코드를 그대로 재사용하고 IPC 경계만 설계해 빠른 출시</li>
+            <li class="result">웹 코드 85% 재사용, 별도 네이티브 개발 없이 출시 → 오프라인 고객사 신규 확보</li>
+            <li class="result">웹과 데스크톱 동일 코드베이스 유지로 신규 기능 개발 비용 이원화 달성</li>
+          </ul>
+          <p class="lesson">
+            <strong>결정 과정:</strong> 네이티브 데스크톱 앱을 새로 만드는 옵션 vs 기존 웹 자산(FE·BE·ML)을 재활용하는 Electron 패키징 두 가지를 두고 후자 선택. 출시 속도와 이중 유지보수 회피가 결정 요인.<br>
+            <strong>배운 점:</strong> "코드 85% 재사용"이라는 숫자보다 IPC 경계 설계가 본질이었다. 초기 평탄화한 IPC 인터페이스가 후반 디버깅 시간을 크게 줄였고, 웹과 데스크톱 양쪽에서 동일 계약을 유지할 수 있게 해줬다.
+          </p>
+        </div>
+
+        <div class="project">
+          <h4>Rust · Tauri 실시간 검사 수집 프로그램</h4>
+          <p class="context">와전류(ECT) 검사 장비를 제어하는 수집 프로그램이 레거시였고, 현장에서는 수집 &rarr; 신호처리 &rarr; 시각화가 한 화면에서 실시간으로 돌아야 했다. 장비 드라이버 DLL 직접 제어와 고속 스트림 처리는 기존 웹 스택으로 감당할 수 없었다.</p>
+          <ul>
+            <li>Rust + Tauri v2로 데스크톱 앱 구축, 장비와는 ZMQ SUB 수신 + C FFI(드라이버 DLL) 하이브리드로 연결</li>
+            <li>수집 시 10개 스레드 파이프라인 설계 (수신 &rarr; 파싱 &rarr; 그래프 실행 &rarr; 바이너리 프레임 방출), crossbeam 채널 단방향 연결 + UI 방출 단일 워커 직렬화</li>
+            <li>Scale(증폭&middot;회전) &middot; Mix &middot; Filter를 컴파일드 DAG로 실시간 실행, 진폭&middot;위상 알람 엔진과 장비 바이너리 포맷 Import/Export 구현</li>
+            <li>프론트는 기존 웹 뷰어 자산(스트립 차트, 리사주, 깊이 곡선) 재사용, setup / inspection / analysis 3개 모드로 분리</li>
+            <li class="result">장비 제어부터 판독까지 단일 데스크톱 앱으로 통합, 웹 뷰어와 시각화 코드 공유</li>
+            <li class="result">Rust 백엔드로 실시간 수집 경로 확보하면서 UI는 기존 React 자산 그대로 유지</li>
+          </ul>
+          <p class="lesson">
+            <strong>배운 점:</strong> 실시간 파이프라인에서 먼저 무너지는 건 연산이 아니라 이벤트 방출 경로였다. 스레드마다 UI로 직접 emit하면 프레임 순서가 뒤섞였고, 모든 방출을 단일 워커로 직렬화하고 나서야 순서가 보장됐다.
+          </p>
+        </div>
+
+        <div class="project">
+          <h4>자체 DWG 디코더 및 웹 CAD 플랫폼</h4>
+          <p class="context">플랜트 배관 검사 SaaS는 도면(P&amp;ID &middot; ISO)을 웹에서 읽고 편집해야 했는데, 고객이 제공 가능한 입력은 DWG와 PDF뿐이었다(중간 포맷 제공 불가). 상용 CAD SDK는 웹/SaaS 배포를 허용하는 티어의 연 라이선스 비용이 부담이었고, Go 바인딩이 없어 별도 마이크로서비스를 세워야 했다.</p>
+          <ul>
+            <li>Go로 DWG 바이너리 디코더를 직접 구현하고 gRPC 파싱 사이드카로 분리 (NestJS BE + React/Three.js 2D 뷰어와 프로세스 경계 분리)</li>
+            <li>자체 네이티브 CAD 포맷을 원본으로 두고 DWG는 1회 import 전용으로 격하 &rarr; 편집&middot;버전 관리는 자체 포맷에서 수행</li>
+            <li>도면 종류 체인(PFD &rarr; P&amp;ID &rarr; ISO)을 라인넘버 조인키로 잇는 3-Way 매칭 파이프라인 설계</li>
+            <li class="result">고객 실도면 69장 전수 검증 &mdash; 열기 실패 0건, 재파싱 간 파싱 엔티티 수가 한 개까지 일치</li>
+            <li class="result">INSERT 블록 전개 0% &rarr; 100% (블록을 정의와 배치로 나눠 담는 구조로 전환)</li>
+            <li class="result">상용 CAD SDK 라이선스 비용 $0, DWG R2010 &middot; R2013 &middot; R2018 판본 지원</li>
+            <li class="result">4개월간 파서 &middot; BE &middot; 뷰어 &middot; 에디터를 단일 모노레포에서 병행 개발</li>
+          </ul>
+          <p class="lesson">
+            <strong>결정 과정:</strong> "도면 뷰어를 만들 것인가, 데이터 조립 파이프라인을 만들 것인가" 에서 후자를 택함. 최종 산출물은 도면 그림이 아니라 AI 부식 예측이 소비할 서킷 데이터이므로, 렌더링 충실도보다 "라인넘버로 도면 간 조인이 되는가" 를 우선순위에 뒀다.<br>
+            <strong>배운 점:</strong> 자체 디코더의 진짜 리스크는 못 여는 파일이 아니라 <strong>조용히 틀리게 읽는 파일</strong> 이었다. 미지원 판본은 에러 없이 레이어가 통째로 빈 채 들어왔다. 이후 검증 기준을 "열렸는가" 에서 "무엇을 무엇과 대조해 셌는가" 로 바꿨다.
+          </p>
+        </div>
+
+        <div class="project">
+          <h4>정부 R&amp;D 과제 PO / 기술 총괄</h4>
+          <ul>
+            <li><strong>배관 부식 AI 실증 과제</strong> PO &mdash; 도면 데이터 파이프라인 아키텍처 설계, 수요기업&middot;SI 파트너와의 3자 요구사항 조율</li>
+            <li><strong>비파괴검사 시뮬레이션 R&amp;D 과제</strong> 기술 아키텍처 설계 &mdash; 신호 생성 엔진을 교체 가능한 백엔드로 분리하고 계층&middot;계약 구조를 정의해, 엔진을 바꿔도 상위 파이프라인 재개발이 발생하지 않도록 설계</li>
+            <li>API 579 Level 3 적합성 평가(FFS)용 3D 메쉬 생성기를 자체 파라메트릭 hex 방식으로 구현 &mdash; 상용/GPL 메쉬 라이브러리 회피, 라이선스 비용 $0</li>
+          </ul>
+        </div>
+
+        <div class="project">
+          <h4>팀 빌딩</h4>
+          <ul>
+            <li>4개 파트(Visualization, Product, Platform, ML) 구조 설계, 2주 스프린트 운영</li>
+            <li>코드 리뷰 문화 정착, 동시 3~4개 프로젝트 병렬 관리</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 팀솔루션 -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <h3>팀솔루션 — FE 개발자</h3>
+          <span class="period">2022.05 ~ 2023.10</span>
+        </div>
+        <div class="exp-meta">디지털 트윈 3D 시각화 솔루션</div>
+
+        <div class="project">
+          <h4>3D 디지털 트윈 대시보드 개발</h4>
+          <p class="context">공장 3D 모델과 웹 대시보드가 분리되어 운영자가 두 화면을 번갈아 확인해야 했다.</p>
+          <ul>
+            <li>WebGL 3D 모델 iframe 임베드 + postMessage 양방향 통신으로 단일 화면 통합</li>
+            <li>소켓 + Kafka로 실시간 센서 데이터를 3D 화면에 즉시 반영</li>
+            <li>드래그 기반 대시보드 위젯 커스터마이징 기능 개발</li>
+          </ul>
+          <ul>
+            <li class="result">고객사 3곳 납품 완료, Azure Kubernetes 환경 안정 운영</li>
+          </ul>
+          <div class="exp-tech">
+            <span>Next.js</span><span>React</span><span>NestJS</span><span>PostgreSQL</span><span>Azure</span><span>WebGL</span><span>Kafka</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 트리피누 -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <h3>트리피누 — 풀스택 개발자</h3>
+          <span class="period">2020.09 ~ 2022.04</span>
+        </div>
+        <div class="exp-meta">여행 일정 추천 플랫폼</div>
+
+        <div class="project">
+          <h4>1인 풀스택 MVP 개발 및 런칭</h4>
+          <ul>
+            <li>Django REST Framework + React 풀스택 단독 개발</li>
+            <li>OAuth 2.0 소셜 로그인 도입 → 회원가입 전환율 약 35% 향상</li>
+            <li>Google Maps 연동 지도 기반 일정 시각화, 성격 유형별 자동 추천 알고리즘 구현</li>
+            <li>AWS CI/CD 구축으로 무중단 배포 환경 확보</li>
+          </ul>
+          <p class="exp-note">풀스택 경험을 통해 BE 개발자와의 API 설계 협업, DB 스키마 논의에서 원활한 커뮤니케이션이 가능합니다.</p>
+          <div class="exp-tech">
+            <span>Django</span><span>React</span><span>PostgreSQL</span><span>AWS</span><span>Google Maps API</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 아이엔지코리아 -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <h3>아이엔지코리아 — SW 개발자</h3>
+          <span class="period">2019.07 ~ 2020.07</span>
+        </div>
+        <div class="exp-meta">스마트 팩토리 MES 시스템</div>
+
+        <div class="project">
+          <h4>공정 모듈 재사용 구조 설계 및 5개 고객사 납품</h4>
+          <ul>
+            <li>입고 → 공정 → 출고 공통 프로세스 모듈화, 고객사별 커스터마이징 구조로 전환</li>
+            <li>키오스크, 바코드(PDA), 블루투스 측정기 등 하드웨어 인터페이스 개발</li>
+            <li class="result">개발 기간 12주 → 6주로 50% 단축, 1년간 5개 고객사 전수 납품</li>
+          </ul>
+          <p class="exp-note">제조 현장의 하드웨어 연동 경험이 현재 검사 장비 데이터를 다루는 도메인과 연결됩니다.</p>
+          <div class="exp-tech">
+            <span>C#</span><span>WinForms</span><span>Java</span><span>Android</span><span>MySQL</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section">
+      <div class="section-title">Skills</div>
+      <dl class="skills-grid">
+        <dt>Visualization</dt>
+        <dd>D3.js, WebGL, WebGPU, Babylon.js, Three.js, Canvas API, SVG</dd>
+        <dt>Frontend</dt>
+        <dd>TypeScript, React, Next.js, Vite</dd>
+        <dt>Backend</dt>
+        <dd>Node.js, NestJS, Go, gRPC, Django, FastAPI</dd>
+        <dt>Infra</dt>
+        <dd>AWS, GCP, Docker, Jenkins, Prometheus/Grafana, Sentry</dd>
+        <dt>Data/Analytics</dt>
+        <dd>BigQuery, Cloud Logging</dd>
+        <dt>Systems / Desktop</dt>
+        <dd>Rust, Tauri, Electron, ZMQ, C FFI</dd>
+        <dt>Database</dt>
+        <dd>PostgreSQL, MySQL</dd>
+        <dt>AI Workflow</dt>
+        <dd>Claude Code (MCP), Cursor</dd>
+      </dl>
+    </section>
+
+    <!-- Education -->
+    <section class="section">
+      <div class="section-title">Education</div>
+      <div class="education">
+        <strong>고려사이버대학교</strong> 컴퓨터공학과 졸업 (3학년 편입) <span class="period">2024.03 ~ 2026.02</span><br>
+        IOT 시스템 개발 전문가 과정 수료
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
