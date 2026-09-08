@@ -177,6 +177,13 @@
       font-style: italic;
     }
 
+    .project .prose {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--color-text);
+      margin-bottom: 8px;
+    }
+
     .project ul {
       list-style: none;
       padding: 0;
@@ -414,28 +421,15 @@
 
         <div class="project">
           <h4>인프라 구축 및 DevOps</h4>
-          <p class="context">서버 인프라 부재, 수동 배포, 장애 인지는 고객 리포트에 의존.</p>
-          <ul>
-            <li>GCP VM Bastion → Private 서버 네트워크 아키텍처 설계</li>
-            <li>Jenkins CI/CD, Prometheus + Grafana 모니터링, Sentry FE 에러 추적 구축</li>
-          </ul>
-          <ul>
-            <li class="result">배포 시간 30분 → 5분, 장애 인지 수 시간 → 5분 내 감지</li>
-          </ul>
+          <p class="prose">합류했을 때 서버 인프라가 없었다. 배포는 수동이었고, 장애는 고객이 알려줘야 알았다. GCP VM에 Bastion을 두고 Private 서버로 들어가는 네트워크를 설계한 뒤 Jenkins CI/CD로 배포를 자동화했다. 서버는 Prometheus + Grafana로, FE 에러는 Sentry로 각각 보이게 만들었다. 배포 시간은 30분에서 5분으로, 장애 인지는 수 시간에서 5분 내로 줄었다.</p>
         </div>
 
         <div class="project">
           <h4>Electron 오프라인 데스크톱 앱</h4>
-          <p class="context">웹 기반 솔루션을 운영 중이었으나, 일부 고객사 검사 현장에서 네트워크 없이 오프라인으로 판독해야 하는 요구가 발생. 기존 웹 자산(FE·BE·ML)을 버리지 않고 재활용하면서 오프라인 환경을 지원해야 했다.</p>
-          <ul>
-            <li>Electron으로 FE + BE + ML 패키지를 단일 데스크톱 앱으로 패키징, 오프라인 Windows 앱으로 빌드</li>
-            <li>기존 웹 코드를 그대로 재사용하고 IPC 경계만 설계해 빠른 출시</li>
-            <li class="result">웹 코드 85% 재사용, 별도 네이티브 개발 없이 출시 → 오프라인 고객사 신규 확보</li>
-            <li class="result">웹과 데스크톱 동일 코드베이스 유지로 신규 기능 개발 비용 이원화 달성</li>
-          </ul>
+          <p class="prose">웹 솔루션을 운영하던 중, 일부 고객사 검사 현장에서 네트워크 없이 판독해야 한다는 요구가 들어왔다. 네이티브 데스크톱 앱을 새로 만드는 안과 기존 웹 자산(FE&middot;BE&middot;ML)을 재활용하는 Electron 패키징 안을 놓고 후자를 골랐다. 출시 속도와 이중 유지보수 회피가 결정 요인이었다.</p>
+          <p class="prose">FE + BE + ML 패키지를 단일 앱으로 묶어 오프라인 Windows 앱으로 빌드했다. 기존 웹 코드는 손대지 않고 IPC 경계만 새로 설계했다. 웹 코드 85%를 재사용해 별도 네이티브 개발 없이 출시했고, 오프라인 고객사를 신규 확보했다. 웹과 데스크톱이 같은 코드베이스를 쓰니 신규 기능 개발 비용도 이원화되지 않았다.</p>
           <p class="lesson">
-            <strong>결정 과정:</strong> 네이티브 데스크톱 앱을 새로 만드는 옵션 vs 기존 웹 자산(FE·BE·ML)을 재활용하는 Electron 패키징 두 가지를 두고 후자 선택. 출시 속도와 이중 유지보수 회피가 결정 요인.<br>
-            <strong>배운 점:</strong> "코드 85% 재사용"이라는 숫자보다 IPC 경계 설계가 본질이었다. 초기 평탄화한 IPC 인터페이스가 후반 디버깅 시간을 크게 줄였고, 웹과 데스크톱 양쪽에서 동일 계약을 유지할 수 있게 해줬다.
+            <strong>배운 점:</strong> "코드 85% 재사용"이라는 숫자보다 IPC 경계 설계가 본질이었다. 초기에 인터페이스를 평탄하게 잡아둔 덕에 후반 디버깅 시간이 크게 줄었고, 웹과 데스크톱 양쪽에서 같은 계약을 유지할 수 있었다.
           </p>
         </div>
 
@@ -451,7 +445,7 @@
             <li class="result">Rust 백엔드로 실시간 수집 경로 확보하면서 UI는 기존 React 자산 그대로 유지</li>
           </ul>
           <p class="lesson">
-            <strong>배운 점:</strong> 실시간 파이프라인에서 먼저 무너지는 건 연산이 아니라 이벤트 방출 경로였다. 스레드마다 UI로 직접 emit하면 프레임 순서가 뒤섞였고, 모든 방출을 단일 워커로 직렬화하고 나서야 순서가 보장됐다.
+            <strong>배운 점:</strong> 병목이 연산량에 있을 거라 보고 파이프라인 단계를 나눴는데, 정작 깨진 곳은 UI 이벤트 방출 쪽이었다. 스레드마다 직접 emit하니 프레임 순서가 뒤섞였고, 방출을 단일 워커에 몰고 나서야 순서가 잡혔다.
           </p>
         </div>
 
@@ -468,7 +462,7 @@
             <li class="result">4개월간 파서 &middot; BE &middot; 뷰어 &middot; 에디터를 단일 모노레포에서 병행 개발</li>
           </ul>
           <p class="lesson">
-            <strong>결정 과정:</strong> "도면 뷰어를 만들 것인가, 데이터 조립 파이프라인을 만들 것인가" 에서 후자를 택함. 최종 산출물은 도면 그림이 아니라 AI 부식 예측이 소비할 서킷 데이터이므로, 렌더링 충실도보다 "라인넘버로 도면 간 조인이 되는가" 를 우선순위에 뒀다.<br>
+            <strong>결정 과정:</strong> "도면 뷰어를 만들 것인가, 데이터 조립 파이프라인을 만들 것인가" 에서 후자를 택함. 이 시스템의 최종 출력은 AI 부식 예측이 소비할 서킷 데이터라, 렌더링 충실도를 올리는 것보다 "라인넘버로 도면 간 조인이 되는가" 가 성패를 갈랐다.<br>
             <strong>배운 점:</strong> 자체 디코더의 진짜 리스크는 못 여는 파일이 아니라 <strong>조용히 틀리게 읽는 파일</strong> 이었다. 미지원 판본은 에러 없이 레이어가 통째로 빈 채 들어왔다. 이후 검증 기준을 "열렸는가" 에서 "무엇을 무엇과 대조해 셌는가" 로 바꿨다.
           </p>
         </div>
@@ -501,15 +495,7 @@
 
         <div class="project">
           <h4>3D 디지털 트윈 대시보드 개발</h4>
-          <p class="context">공장 3D 모델과 웹 대시보드가 분리되어 운영자가 두 화면을 번갈아 확인해야 했다.</p>
-          <ul>
-            <li>WebGL 3D 모델 iframe 임베드 + postMessage 양방향 통신으로 단일 화면 통합</li>
-            <li>소켓 + Kafka로 실시간 센서 데이터를 3D 화면에 즉시 반영</li>
-            <li>드래그 기반 대시보드 위젯 커스터마이징 기능 개발</li>
-          </ul>
-          <ul>
-            <li class="result">고객사 3곳 납품 완료, Azure Kubernetes 환경 안정 운영</li>
-          </ul>
+          <p class="prose">공장 3D 모델과 웹 대시보드가 따로 놀아서 운영자가 두 화면을 번갈아 봐야 했다. WebGL 3D 모델을 iframe으로 임베드하고 postMessage 양방향 통신을 걸어 한 화면으로 합쳤다. 소켓과 Kafka로 실시간 센서 데이터가 3D 화면에 바로 반영되게 했고, 드래그로 위젯을 재배치하는 대시보드 커스터마이징을 붙였다. 고객사 3곳에 납품했고 Azure Kubernetes 환경에서 안정 운영했다.</p>
           <div class="exp-tech">
             <span>Next.js</span><span>React</span><span>NestJS</span><span>PostgreSQL</span><span>Azure</span><span>WebGL</span><span>Kafka</span>
           </div>
