@@ -381,8 +381,8 @@
       <!-- 딥아이 -->
       <div class="exp-item">
         <div class="exp-header">
-          <h3>딥아이 — DEV 팀장 (풀스택)</h3>
-          <span class="period">2023.11 ~ 현재</span>
+          <h3>딥아이 — DEV 팀장 &middot; Frontend Lead</h3>
+          <span class="period">2023.10 ~ 현재</span>
         </div>
         <div class="exp-meta">6명 팀 리딩 · 비파괴검사 AI 솔루션</div>
 
@@ -395,7 +395,7 @@
             <li>2D 맵의 3D 시각화를 위해 Babylon.js + WebGPU 기반 3D 뷰어 구축</li>
           </ul>
           <ul>
-            <li class="result">D3.js + SVG 대비 렌더링 성능 약 10배 향상, 수십만 포인트에서 60fps 유지</li>
+            <li class="result">D3.js + SVG로는 끊기던 대용량 히트맵의 드래그&middot;줌을 GPU 렌더링으로 실시간 처리</li>
             <li class="result">고정 3개 → 검사자가 자유롭게 차트 선택·배치하는 구조로 전환</li>
             <li class="result">2D → 3D 맵 확장으로 검사 데이터의 입체적 분석 가능, 고객 만족도 확보</li>
           </ul>
@@ -421,8 +421,8 @@
             <li>TypeScript strict 모드 전면 적용</li>
           </ul>
           <ul>
-            <li class="result">공통 UI 1회 수정으로 전체 앱 반영, 신규 화면 평균 개발 일수 마이그레이션 전후 비교 약 40% 단축</li>
-            <li class="result">Sentry 기준 마이그레이션 전후 런타임 타입 에러 90% 이상 감소</li>
+            <li class="result">공통 UI 1회 수정으로 전체 앱 반영</li>
+            <li class="result">strict 타입으로 런타임 타입 에러를 빌드 단계에서 차단</li>
           </ul>
           <p class="lesson">
             <strong>결정 과정:</strong> 프로젝트 수가 늘면서 공통 컴포넌트·유틸의 재사용과 일관된 개선이 더 가치 있어진 시점이라고 판단. 모노레포로 통합해 "한 번 개선하면 모든 앱에 반영되는" 구조로 설계.<br>
@@ -432,15 +432,15 @@
 
         <div class="project">
           <h4>인프라 구축 및 DevOps</h4>
-          <p class="prose">합류했을 때 서버 인프라가 없었다. 배포는 수동이었고, 장애는 고객이 알려줘야 알았다. GCP VM에 Bastion을 두고 Private 서버로 들어가는 네트워크를 설계한 뒤 Jenkins CI/CD로 배포를 자동화했다. 서버는 Prometheus + Grafana로, FE 에러는 Sentry로 각각 보이게 만들었다. 배포 시간은 30분에서 5분으로, 장애 인지는 수 시간에서 5분 내로 줄었다.</p>
+          <p class="prose">합류했을 때 서버 인프라가 없었다. 배포는 수동이었고, 장애는 고객이 알려줘야 알았다. GCP VM에 Bastion을 두고 Private 서버로 들어가는 네트워크를 설계한 뒤 Jenkins CI/CD로 배포를 자동화했다. 서버는 Prometheus + Grafana로, FE 에러는 Sentry로 각각 보이게 만들었다. 수동 배포가 자동화됐고, 장애를 고객보다 먼저 알게 됐다.</p>
         </div>
 
         <div class="project">
           <h4>Electron 오프라인 데스크톱 앱</h4>
           <p class="prose">웹 솔루션을 운영하던 중, 일부 고객사 검사 현장에서 네트워크 없이 판독해야 한다는 요구가 들어왔다. 네이티브 데스크톱 앱을 새로 만드는 안과 기존 웹 자산(FE&middot;BE&middot;ML)을 재활용하는 Electron 패키징 안을 놓고 후자를 골랐다. 출시 속도와 이중 유지보수 회피가 결정 요인이었다.</p>
-          <p class="prose">FE + BE + ML 패키지를 단일 앱으로 묶어 오프라인 Windows 앱으로 빌드했다. 기존 웹 코드는 손대지 않고 IPC 경계만 새로 설계했다. 웹 코드 85%를 재사용해 별도 네이티브 개발 없이 출시했고, 오프라인 고객사를 신규 확보했다. 웹과 데스크톱이 같은 코드베이스를 쓰니 신규 기능 개발 비용도 이원화되지 않았다.</p>
+          <p class="prose">설계와 초기 구성을 맡고 팀 구현을 리드해, FE + BE + ML 패키지를 단일 오프라인 Windows 앱으로 묶었다. 오프라인 DB는 Windows SQL Server Express(MS-SQL)로 두었다. 기존 웹 코드는 손대지 않고 IPC 경계만 새로 설계했다. 기존 웹 코드를 재사용해 별도 네이티브 개발 없이 출시했다. 웹과 데스크톱이 같은 코드베이스를 쓰니 신규 기능 개발 비용도 이원화되지 않았다.</p>
           <p class="lesson">
-            <strong>배운 점:</strong> "코드 85% 재사용"이라는 숫자보다 IPC 경계 설계가 본질이었다. 초기에 인터페이스를 평탄하게 잡아둔 덕에 후반 디버깅 시간이 크게 줄었고, 웹과 데스크톱 양쪽에서 같은 계약을 유지할 수 있었다.
+            <strong>배운 점:</strong> 코드 재사용률보다 IPC 경계 설계가 본질이었다. 초기에 인터페이스를 평탄하게 잡아둔 덕에 후반 디버깅 시간이 크게 줄었고, 웹과 데스크톱 양쪽에서 같은 계약을 유지할 수 있었다.
           </p>
         </div>
 
@@ -480,10 +480,12 @@
         </div>
 
         <div class="project">
-          <h4>정부 R&amp;D 과제 PO / 기술 총괄</h4>
+          <h4>제조&middot;플랜트 AI 과제 PL (고객 소통 &middot; 아키텍처 &middot; 개발)</h4>
           <ul>
-            <li><strong>배관 부식 AI 실증 과제</strong> PO &mdash; 도면 데이터 파이프라인 아키텍처 설계, 수요기업&middot;SI 파트너와의 3자 요구사항 조율</li>
-            <li><strong>비파괴검사 시뮬레이션 R&amp;D 과제</strong> 기술 아키텍처 설계 &mdash; 신호 생성 엔진을 교체 가능한 백엔드로 분리하고 계층&middot;계약 구조를 정의해, 엔진을 바꿔도 상위 파이프라인 재개발이 발생하지 않도록 설계</li>
+            <li><strong>배관 부식 AI 실증 과제</strong> PL &mdash; 도면 데이터 파이프라인 아키텍처 설계, 수요기업&middot;SI 파트너와의 3자 요구사항 조율</li>
+            <li><strong>비파괴검사 시뮬레이션 R&amp;D 과제</strong> 기술 아키텍처 설계 &mdash; 신호 생성 엔진을 교체 가능한 백엔드로 분리하고 계층&middot;계약 구조를 정의해, 엔진을 바꿔도 상위 파이프라인 재개발이 발생하지 않도록 설계 (구현은 외주, 설계&middot;기술문서 담당)</li>
+            <li><strong>X-ray AI 자동 검사</strong> PL &mdash; 주조 라인의 기존 판독 장비를 대체하는 AI 판독 플랫폼, 설비사와 UDP 연동 규격 협의</li>
+            <li><strong>SK AX OCEAN 설비&middot;TA&middot;검사 인터페이스</strong> 설계 &mdash; 설비 마스터&middot;정기보수(TA)&middot;검사 대상 수신 정의서 작성(v0.1~v0.3), CoE 구축팀과 필드&middot;식별자 매핑 협의</li>
             <li>API 579 Level 3 적합성 평가(FFS)용 3D 메쉬 생성기를 자체 파라메트릭 hex 방식으로 구현 &mdash; 상용/GPL 메쉬 라이브러리 회피, 라이선스 비용 $0</li>
           </ul>
         </div>
@@ -518,7 +520,7 @@
       <div class="exp-item">
         <div class="exp-header">
           <h3>트리피누 — 풀스택 개발자</h3>
-          <span class="period">2020.09 ~ 2022.04</span>
+          <span class="period">2020.09 ~ 2022.03</span>
         </div>
         <div class="exp-meta">여행 일정 추천 플랫폼</div>
 
@@ -526,7 +528,7 @@
           <h4>1인 풀스택 MVP 개발 및 런칭</h4>
           <ul>
             <li>Django REST Framework + React 풀스택 단독 개발</li>
-            <li>OAuth 2.0 소셜 로그인 도입 → 회원가입 전환율 약 35% 향상</li>
+            <li>OAuth 2.0 소셜 로그인(Google, Kakao) 도입</li>
             <li>Google Maps 연동 지도 기반 일정 시각화, 성격 유형별 자동 추천 알고리즘 구현</li>
             <li>AWS CI/CD 구축으로 무중단 배포 환경 확보</li>
           </ul>
@@ -550,15 +552,14 @@
           <ul>
             <li>입고 → 공정 → 출고 공통 프로세스 모듈화, 고객사별 커스터마이징 구조로 전환</li>
             <li>키오스크, 바코드(PDA), 블루투스 측정기 등 하드웨어 인터페이스 개발</li>
-            <li class="result">개발 기간 12주 → 6주로 50% 단축, 1년간 5개 고객사 전수 납품</li>
+            <li class="result">공통 모듈 재사용으로 1년간 5개 고객사 납품</li>
           </ul>
           <p class="exp-note">제조 현장의 하드웨어 연동 경험이 현재 검사 장비 데이터를 다루는 도메인과 연결됩니다.</p>
           <div class="exp-tech">
-            <span>C#</span><span>WinForms</span><span>Java</span><span>Android</span><span>MySQL</span>
+            <span>C#</span><span>WinForms</span><span>WPF</span><span>LINQ</span><span>Java</span><span>Android</span><span>MySQL</span>
           </div>
         </div>
       </div>
-    </section>
 
       <!-- 엔에스이 -->
       <div class="exp-item">
@@ -577,6 +578,7 @@
           <p class="lesson">사용자가 실제로 어디서 막히는지를 먼저 본 경험이, 이후 제품을 만들 때 화면보다 사용자 흐름을 먼저 그리는 습관으로 이어졌습니다.</p>
         </div>
       </div>
+    </section>
 
     <!-- Skills -->
     <section class="section">
@@ -587,7 +589,7 @@
         <dt>Frontend</dt>
         <dd>TypeScript, React, Next.js, Vite</dd>
         <dt>Backend</dt>
-        <dd>Node.js, NestJS, Go, gRPC, Django, FastAPI</dd>
+        <dd>Node.js, NestJS, Go, gRPC, Python (Django, FastAPI), C#</dd>
         <dt>Infra</dt>
         <dd>AWS, GCP, Docker, Jenkins, Prometheus/Grafana, Sentry</dd>
         <dt>Data/Analytics</dt>
@@ -595,7 +597,7 @@
         <dt>Systems / Desktop</dt>
         <dd>Rust, Tauri, Electron, ZMQ, C FFI</dd>
         <dt>Database</dt>
-        <dd>PostgreSQL, MySQL</dd>
+        <dd>PostgreSQL, MySQL, MS-SQL</dd>
         <dt>AI Workflow</dt>
         <dd>Claude Code (MCP), Cursor</dd>
       </dl>
@@ -606,6 +608,7 @@
       <div class="section-title">Education</div>
       <div class="education">
         <strong>고려사이버대학교</strong> 컴퓨터공학과 졸업 (3학년 편입) <span class="period">2024.03 ~ 2026.02</span><br>
+        <strong>구미대학교</strong> 기계자동차학과 졸업 <span class="period">2010.03 ~ 2015.02</span><br>
         IOT 시스템 개발 전문가 과정 수료
       </div>
     </section>
